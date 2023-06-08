@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Census 2021</title>
+        <script src="./script.js"></script>
+    </head>
+    <body>
+        <h1>Select category</h1>
+        <select id="menu" onchange="handleSelection()">
+            <option value="">Select a category</option>
+            <option value="caste">Caste</option>
+            <option value="religion">Relgion</option>
+        </select>
+
+        <div id="casteDatawrapper" style="display: none;">
+            <iframe title="Kshetri" aria-label="Map" id="datawrapper-chart-y6QIW" src="https://datawrapper.dwcdn.net/y6QIW/3/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>
+        </div>
+        <div id="religionDatawrapper" style="display: none;">
+            <iframe title="Percentage of Islam" aria-label="Map" id="datawrapper-chart-Nj2u6" src="https://datawrapper.dwcdn.net/Nj2u6/2/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>
+        </div>
+    </body>
+</html>
