@@ -1,0 +1,28 @@
+body {
+    /* background-color: black; */
+    background-color:black;
+    color: aqua;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    padding: 50px;
+    color: aliceblue;
+}
+
+.center-align {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.dataWrapperEmbedded {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    color: white;
+    
+}
