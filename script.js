@@ -1,5 +1,5 @@
 function handleSelection(){
-    var menu = document.getElementById("menu");
+    var menu = document.getElementById("censusMenu");
     var selectedOption = menu.options[menu.selectedIndex].value;
 
     var casteDatawrapper = document.getElementById("casteDatawrapper");
