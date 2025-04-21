@@ -1,31 +1,78 @@
 <!DOCTYPE html>
-<html>
-<link rel="stylesheet" href="./styles.css">
-
+<html lang="en">
 <head>
-    <title>Census 2021</title>
-    <script src="./script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Census 2021 Data Explorer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
-
 <body>
-    <h1>Census 2021</h1>
-    <h2>Select category
-        <select class="menu" id="censusMenu" onchange="handleSelection()">
-            <option value="">Select a category</option>
-            <option value="caste">Caste</option>
-            <option value="religion">Religion</option>
-        </select>
-    </h2>
-    <div class="dataWrapperEmbedded" id="casteDatawrapper" style="display: none;">
-            <script type="text/javascript" defer src="https://datawrapper.dwcdn.net/y6QIW/embed.js?v=5"
-                charset="utf-8"></script><noscript><img src="https://datawrapper.dwcdn.net/y6QIW/full.png"
-                    alt="" /></noscript>
-    </div>
-    <div class="dataWrapperEmbedded" id="religionDatawrapper" style="display: none;">
-        <iframe title="Percentage of Islam" aria-label="Map" id="datawrapper-chart-Nj2u6"
-            src="https://datawrapper.dwcdn.net/Nj2u6/2/" scrolling="no" frameborder="0" style="border: none;"
-            width="600" height="451" data-external="1"></iframe>
-    </div>
-</body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1><i class="fas fa-chart-bar"></i> Nepal Census 2021</h1>
+                <p class="subtitle">Exploring demographic patterns across the nation</p>
+            </div>
+        </header>
 
+        <main class="app-main">
+            <div class="control-panel">
+                <div class="category-selector">
+                    <label for="mainCategory"><i class="fas fa-filter"></i> Main Category</label>
+                    <select id="mainCategory" class="styled-select">
+                        <option value="">-- Select a category --</option>
+                        <option value="caste">Caste/Ethnicity</option>
+                        <option value="religion">Religion</option>
+                        <option value="language">Language</option>
+                        <option value="education">Education</option>
+                    </select>
+                </div>
+
+                <div class="subcategory-selector" id="subcategoryContainer" style="display: none;">
+                    <label for="subCategory"><i class="fas fa-list-ul"></i> Subcategory</label>
+                    <select id="subCategory" class="styled-select">
+                        <option value="">-- Select a subcategory --</option>
+                    </select>
+                </div>
+
+                <div class="visualization-toggle">
+                    <span>View as:</span>
+                    <div class="toggle-options">
+                        <button class="toggle-btn active" data-view="map"><i class="fas fa-map"></i> Map</button>
+                        <button class="toggle-btn" data-view="chart"><i class="fas fa-chart-pie"></i> Chart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visualization-container">
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    <p>Loading visualization...</p>
+                </div>
+                <div id="dataVisualization"></div>
+            </div>
+
+            <div class="data-info">
+                <div class="info-card">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>About This Data</h3>
+                    <p>The Nepal Census 2021 provides comprehensive demographic data collected across all regions of the country. This visualization tool helps explore patterns and distributions.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Data Source</h3>
+                    <p>Official census data from Central Bureau of Statistics, Nepal. Visualizations powered by Datawrapper.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>© 2023 Nepal Census Data Explorer | Designed for research and educational purposes</p>
+        </footer>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
 </html>
