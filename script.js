@@ -1,194 +1,198 @@
-// Data configuration
-const dataConfig = {
-    caste: {
-        title: "Caste/Ethnicity Distribution",
-        options: [
-            { value: "y6QIW", label: "Kshetri", chartType: "map" },
-            { value: "5bubU", label: "Brahmin-Hill", chartType: "map" },
-            { value: "DEF456", label: "Thakuri", chartType: "map" },
-            { value: "GHI789", label: "Tamang", chartType: "map" },
-            { value: "JKL012", label: "Newar", chartType: "map" },
-            { value: "MNO345", label: "Magar", chartType: "map" }
-        ]
+// --- Configuration ---
+
+// Map your Datawrapper chart embed codes here.
+// Structure: { categoryValue: { subCategoryName: { embedCode: 'FULL_HTML_EMBED_CODE_STRING' } } }
+// ** Go to Datawrapper, get the full embed code (<iframe> + <script> usually) for EACH chart,
+// ** and paste it as a JavaScript string below. Be careful with quotes inside the string!
+// ** Using backticks (`) for the string makes it easier to handle multi-line code and quotes.
+const datawrapperCharts = {
+    'caste': {
+        '-- Select Caste Data --': { embedCode: null }, // Placeholder
+        'Kshetri': {
+            embedCode: `<iframe title="Kshetri" aria-label="Map" id="datawrapper-chart-y6QIW" src="https://datawrapper.dwcdn.net/y6QIW/5/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>`
+            // Note: This is the SCRIPT embed. If you have an IFRAME embed code, use that instead. Example:
+            // embedCode: `<iframe title="Title From Datawrapper" aria-label="Map" id="datawrapper-chart-XXXXX" src="https://datawrapper.dwcdn.net/XXXXX/Y/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="ZZZ" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();\x3c/script>`
+            // ** REPLACE THE ABOVE WITH YOUR ACTUAL, COMPLETE KSHETRI EMBED CODE **
+        },
+        'Brahmin-Hill': {
+            embedCode: `<iframe title="Brahman - Hill" aria-label="Map" id="datawrapper-chart-5bubU" src="https://datawrapper.dwcdn.net/5bubU/1/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>` // ** REPLACE **
+        },
+        'Thakuri': {
+            embedCode: `<iframe title="Thakuri" aria-label="Map" id="datawrapper-chart-3fMtK" src="https://datawrapper.dwcdn.net/3fMtK/3/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>` // ** REPLACE **
+        },
+        'Tamang': {
+            embedCode: `<iframe title="Tamang" aria-label="Map" id="datawrapper-chart-sTHeH" src="https://datawrapper.dwcdn.net/sTHeH/4/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>` // ** REPLACE **
+        },
+        // Add other caste sub-categories here
     },
-    religion: {
-        title: "Religious Distribution",
-        options: [
-            { value: "Nj2u6", label: "Islam", chartType: "map" },
-            { value: "PQR678", label: "Hindu", chartType: "map" },
-            { value: "STU901", label: "Christian", chartType: "map" },
-            { value: "VWX234", label: "Buddhist", chartType: "map" },
-            { value: "YZA567", label: "Kirat", chartType: "map" }
-        ]
-    },
-    language: {
-        title: "Language Distribution",
-        options: [
-            { value: "BCD890", label: "Nepali", chartType: "map" },
-            { value: "EFG123", label: "Maithili", chartType: "map" },
-            { value: "HIJ456", label: "Bhojpuri", chartType: "map" },
-            { value: "KLM789", label: "Tharu", chartType: "map" },
-            { value: "NOP012", label: "Tamang", chartType: "map" }
-        ]
-    },
-    education: {
-        title: "Education Level",
-        options: [
-            { value: "QRS345", label: "Literacy Rate", chartType: "map" },
-            { value: "TUV678", label: "Higher Education", chartType: "map" },
-            { value: "WXY901", label: "Primary Education", chartType: "map" }
-        ]
+    'religion': {
+        '-- Select Religion Data --': { embedCode: null }, // Placeholder
+        'Islam': {
+             // Using the iframe example you provided initially
+            embedCode: `<iframe title="Percentage of Islam" aria-label="Map" id="datawrapper-chart-Nj2u6" src="https://datawrapper.dwcdn.net/Nj2u6/3/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>`
+             // ** If Datawrapper gives you a different embed code for ISLAM now, use that one **
+        },
+        'Hindu': {
+            embedCode: `<iframe title="Percentage of Hindus" aria-label="Map" id="datawrapper-chart-xz5Wn" src="https://datawrapper.dwcdn.net/xz5Wn/4/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>` // ** REPLACE **
+        },
+        'Christian': {
+            embedCode: `<iframe title="Percentage of Christians" aria-label="Map" id="datawrapper-chart-xTki5" src="https://datawrapper.dwcdn.net/xTki5/3/" scrolling="no" frameborder="0" style="border: none;" width="600" height="451" data-external="1"></iframe>` // ** REPLACE **
+        },
+        // Add other religion sub-categories here
     }
+    // Add other main categories here
 };
 
-// DOM elements
-const mainCategorySelect = document.getElementById('mainCategory');
-const subCategorySelect = document.getElementById('subCategory');
-const subcategoryContainer = document.getElementById('subcategoryContainer');
-const visualizationContainer = document.getElementById('dataVisualization');
-const loadingSpinner = document.getElementById('loadingSpinner');
-const toggleButtons = document.querySelectorAll('.toggle-btn');
+// --- DOM Elements ---
+const categorySelect = document.getElementById('categorySelect');
+const subCategorySelect = document.getElementById('subCategorySelect');
+const chartContainer = document.getElementById('chartContainer');
+// const datawrapperFrame = document.getElementById('datawrapperFrame'); // No longer needed
+// const loadingMessage = document.getElementById('loadingMessage'); // No longer needed
+const noChartMessage = document.getElementById('noChartMessage');
+const initialMessage = document.getElementById('initialMessage');
+const currentDateSpan = document.getElementById('currentDate');
 
-// Current state
-let currentView = 'map'; // 'map' or 'chart'
+// --- Event Listeners ---
+categorySelect.addEventListener('change', handleCategoryChange);
+subCategorySelect.addEventListener('change', handleSubCategoryChange);
 
-// Initialize the app
-function init() {
-    setupEventListeners();
-}
+// --- Functions ---
 
-// Set up event listeners
-function setupEventListeners() {
-    mainCategorySelect.addEventListener('change', handleMainCategoryChange);
-    subCategorySelect.addEventListener('change', handleSubcategoryChange);
-    
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', handleViewToggle);
-    });
-}
+/**
+ * Handles changes in the main category selection.
+ */
+function handleCategoryChange() {
+    const selectedCategory = categorySelect.value;
+    clearSubCategoryOptions();
+    hideChart(); // Clear previous chart/message
+    initialMessage.style.display = 'none';
 
-// Handle main category selection
-function handleMainCategoryChange() {
-    const selectedCategory = mainCategorySelect.value;
-    
-    // Reset subcategory
-    subCategorySelect.innerHTML = '<option value="">-- Select a subcategory --</option>';
-    
-    if (selectedCategory) {
-        // Show subcategory selector
-        subcategoryContainer.style.display = 'block';
-        
-        // Populate subcategories
-        const categoryData = dataConfig[selectedCategory];
-        categoryData.options.forEach(option => {
-            const optElement = document.createElement('option');
-            optElement.value = option.value;
-            optElement.textContent = option.label;
-            subCategorySelect.appendChild(optElement);
-        });
+    if (selectedCategory && datawrapperCharts[selectedCategory]) {
+        const subCategories = datawrapperCharts[selectedCategory];
+        populateSubCategoryOptions(subCategories);
+        subCategorySelect.disabled = false;
+        // Show the container but display the "no chart" message initially
+        showNoChartMessage("Please select specific data from the second dropdown.");
     } else {
-        // Hide subcategory selector
-        subcategoryContainer.style.display = 'none';
-        visualizationContainer.innerHTML = '';
+        subCategorySelect.disabled = true;
+        initialMessage.style.display = 'block'; // Show initial message again
+        hideChart(); // Ensure container is hidden
     }
 }
 
-// Handle subcategory selection
-function handleSubcategoryChange() {
-    const selectedSubcategory = subCategorySelect.value;
-    const selectedCategory = mainCategorySelect.value;
-    
-    if (selectedSubcategory) {
-        showLoading(true);
-        
-        // In a real app, you would fetch the appropriate visualization here
-        // For now, we'll simulate a delay and then show the iframe
-        setTimeout(() => {
-            loadVisualization(selectedCategory, selectedSubcategory);
-            showLoading(false);
-        }, 1000);
+/**
+ * Handles changes in the sub-category selection.
+ */
+function handleSubCategoryChange() {
+    const selectedCategory = categorySelect.value;
+    const selectedSubCategory = subCategorySelect.value;
+
+    if (selectedCategory && datawrapperCharts[selectedCategory] && selectedSubCategory) {
+        const chartData = datawrapperCharts[selectedCategory][selectedSubCategory];
+
+        // Check if there is actual embed code
+        if (chartData && chartData.embedCode) {
+            displayChart(chartData.embedCode);
+        } else {
+            // Handle placeholder or missing code
+            showNoChartMessage("Please select specific data.");
+        }
     } else {
-        visualizationContainer.innerHTML = '';
+         showNoChartMessage("Please select specific data.");
     }
 }
 
-// Load the appropriate visualization
-function loadVisualization(category, subcategoryId) {
-    // Clear previous visualization
-    visualizationContainer.innerHTML = '';
-    
-    // Find the selected option
-    const categoryData = dataConfig[category];
-    const selectedOption = categoryData.options.find(opt => opt.value === subcategoryId);
-    
-    if (!selectedOption) return;
-    
-    // Create the appropriate visualization based on current view
-    if (currentView === 'map') {
-        loadMapVisualization(selectedOption);
-    } else {
-        loadChartVisualization(selectedOption);
+/**
+ * Populates the sub-category dropdown options.
+ */
+function populateSubCategoryOptions(subCategories) {
+    for (const name in subCategories) {
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        // Disable placeholder options if they have no embed code
+        if (!subCategories[name].embedCode) {
+             option.disabled = true;
+        }
+        subCategorySelect.appendChild(option);
     }
 }
 
-// Load a map visualization
-function loadMapVisualization(option) {
-    const iframe = document.createElement('iframe');
-    iframe.title = option.label;
-    iframe.ariaLabel = 'Map';
-    iframe.src = `https://datawrapper.dwcdn.net/${option.value}/2/`;
-    iframe.scrolling = 'no';
-    iframe.frameBorder = '0';
-    iframe.style.border = 'none';
-    iframe.style.width = '100%';
-    iframe.style.height = '500px';
-    iframe.setAttribute('data-external', '1');
-    
-    visualizationContainer.appendChild(iframe);
+/**
+ * Removes all options from the sub-category dropdown except the default placeholder.
+ */
+function clearSubCategoryOptions() {
+    while (subCategorySelect.options.length > 1) {
+        subCategorySelect.remove(1);
+    }
+    subCategorySelect.selectedIndex = 0;
 }
 
-// Load a chart visualization (placeholder - would need specific chart IDs)
-function loadChartVisualization(option) {
-    // In a real implementation, you would load a different Datawrapper chart
-    // For this example, we'll just show a message
-    const message = document.createElement('div');
-    message.className = 'chart-placeholder';
-    message.innerHTML = `
-        <h3>${option.label} - Chart View</h3>
-        <p>This would display a chart visualization of the data.</p>
-        <p>In a full implementation, you would load a different Datawrapper chart ID for the chart view.</p>
-    `;
-    
-    visualizationContainer.appendChild(message);
+
+/**
+ * Displays the specified Datawrapper chart by injecting its embed code.
+ * @param {string} embedCode - The full HTML embed code string.
+ */
+function displayChart(embedCode) {
+    // Clear previous content (like noChartMessage) and show container
+    chartContainer.innerHTML = ''; // Clear previous content first
+    chartContainer.style.display = 'block'; // Show container
+    noChartMessage.style.display = 'none';
+    initialMessage.style.display = 'none';
+
+    // Inject the new embed code
+    // Browsers might execute scripts injected this way, which is what Datawrapper relies on.
+    chartContainer.innerHTML = embedCode;
 }
 
-// Handle view toggle (map/chart)
-function handleViewToggle(e) {
-    const view = e.currentTarget.dataset.view;
-    
-    if (view === currentView) return;
-    
-    // Update active button
-    toggleButtons.forEach(btn => btn.classList.remove('active'));
-    e.currentTarget.classList.add('active');
-    
-    // Update current view
-    currentView = view;
-    
-    // Reload visualization if we have a subcategory selected
-    if (subCategorySelect.value) {
-        showLoading(true);
-        setTimeout(() => {
-            loadVisualization(mainCategorySelect.value, subCategorySelect.value);
-            showLoading(false);
-        }, 500);
+/**
+ * Hides the chart display area and clears its content.
+ */
+function hideChart() {
+    chartContainer.innerHTML = ''; // Clear injected content
+    chartContainer.style.display = 'none'; // Hide container
+    noChartMessage.style.display = 'none'; // Ensure message is also hidden
+}
+
+/**
+ * Shows a message in the chart area (e.g., "select data").
+ */
+function showNoChartMessage(messageText = "Please make a selection.") {
+    chartContainer.innerHTML = ''; // Clear any previous chart embed
+    noChartMessage.textContent = messageText;
+    noChartMessage.style.display = 'block';
+    chartContainer.style.display = 'block'; // Keep container visible for the message
+    initialMessage.style.display = 'none';
+}
+
+
+/**
+ * Sets the current date in the footer.
+ */
+function setCurrentDate() {
+    if(currentDateSpan) {
+        const today = new Date();
+        // Format date as desired, e.g., Monday, April 21, 2025
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        currentDateSpan.textContent = today.toLocaleDateString('en-US', options); // Adjust locale if needed
     }
 }
 
-// Show/hide loading spinner
-function showLoading(show) {
-    loadingSpinner.style.display = show ? 'flex' : 'none';
+// --- Initial Setup ---
+function initializeApp() {
+     subCategorySelect.disabled = true;
+     clearSubCategoryOptions();
+     hideChart(); // Hide chart area initially
+     initialMessage.style.display = 'block'; // Show initial message
+     setCurrentDate(); // Set date in footer
+     if (subCategorySelect.options.length === 0) {
+         const defaultOption = document.createElement('option');
+         defaultOption.value = "";
+         defaultOption.textContent = "-- Select Main Category First --";
+         subCategorySelect.appendChild(defaultOption);
+     }
 }
 
-// Initialize the app when DOM is loaded
-document.addEventListener('DOMContentLoaded', init);
+// Run initialization when the script loads
+initializeApp();

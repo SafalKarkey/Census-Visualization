@@ -1,78 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nepal Census 2021 Data Explorer</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Census 2021 Visualization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <div class="header-content">
-                <h1><i class="fas fa-chart-bar"></i> Nepal Census 2021</h1>
-                <p class="subtitle">Exploring demographic patterns across the nation</p>
-            </div>
-        </header>
+    <header>
+        <h1>Census 2021 Data Visualization</h1>
+    </header>
 
-        <main class="app-main">
-            <div class="control-panel">
-                <div class="category-selector">
-                    <label for="mainCategory"><i class="fas fa-filter"></i> Main Category</label>
-                    <select id="mainCategory" class="styled-select">
-                        <option value="">-- Select a category --</option>
-                        <option value="caste">Caste/Ethnicity</option>
-                        <option value="religion">Religion</option>
-                        <option value="language">Language</option>
-                        <option value="education">Education</option>
+    <main>
+        <nav class="controls">
+            <div class="control-group">
+                <label for="categorySelect">Browse Category:</label>
+                <select class="menu" id="categorySelect">
+                    <option value="">-- Select a Category --</option>
+                    <option value="caste">Caste Demographics</option>
+                    <option value="religion">Religious Distribution</option>
                     </select>
-                </div>
-
-                <div class="subcategory-selector" id="subcategoryContainer" style="display: none;">
-                    <label for="subCategory"><i class="fas fa-list-ul"></i> Subcategory</label>
-                    <select id="subCategory" class="styled-select">
-                        <option value="">-- Select a subcategory --</option>
-                    </select>
-                </div>
-
-                <div class="visualization-toggle">
-                    <span>View as:</span>
-                    <div class="toggle-options">
-                        <button class="toggle-btn active" data-view="map"><i class="fas fa-map"></i> Map</button>
-                        <button class="toggle-btn" data-view="chart"><i class="fas fa-chart-pie"></i> Chart</button>
-                    </div>
-                </div>
             </div>
 
-            <div class="visualization-container">
-                <div class="loading-spinner" id="loadingSpinner">
-                    <div class="spinner"></div>
-                    <p>Loading visualization...</p>
-                </div>
-                <div id="dataVisualization"></div>
+            <div class="control-group">
+                <label for="subCategorySelect">Select Specific Data:</label>
+                <select class="menu" id="subCategorySelect" disabled>
+                    <option value="">-- Select Main Category First --</option>
+                </select>
             </div>
+        </nav>
 
-            <div class="data-info">
-                <div class="info-card">
-                    <i class="fas fa-info-circle"></i>
-                    <h3>About This Data</h3>
-                    <p>The Nepal Census 2021 provides comprehensive demographic data collected across all regions of the country. This visualization tool helps explore patterns and distributions.</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Data Source</h3>
-                    <p>Official census data from Central Bureau of Statistics, Nepal. Visualizations powered by Datawrapper.</p>
-                </div>
+        <section id="visualizationArea">
+            <div id="chartContainer" class="chart-container" style="display: none;">
+                 <p id="noChartMessage" style="display: none;">Please select a category and sub-category to view the data.</p>
             </div>
-        </main>
+             <div id="initialMessage" class="initial-message">
+                <p>Select a category above to begin exploring the census data.</p>
+            </div>
+        </section>
+    </main>
 
-        <footer class="app-footer">
-            <p>© 2023 Nepal Census Data Explorer | Designed for research and educational purposes</p>
-        </footer>
-    </div>
+    <footer>
+        <p>Census Data Visualization | Using Datawrapper API</p>
+        <p>Data as of Census 2021 (if available)</p>
+         <p>Current Date: <span id="currentDate"></span></p>
+    </footer>
 
     <script src="./script.js"></script>
 </body>
+
 </html>
